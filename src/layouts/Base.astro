@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 const { title = '석환의 기록', sig = 'red', metaLeft = '안석환 — 만든 것을 기록한다', metaRight = 'Gyeongnam · 2026' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,13 +14,13 @@ const { title = '석환의 기록', sig = 'red', metaLeft = '안석환 — 만�
   <header class="site-head">
     <div class="wrap">
       <div class="brand-block">
-        <a href="/" class="brand">석환의 기록</a>
+        <a href={`${base}/`} class="brand">석환의 기록</a>
         <span class="brand-sub">Records of what I build</span>
       </div>
       <nav class="site-nav">
-        <a href="/">기록</a>
-        <a href="/tags">태그</a>
-        <a href="/about">소개</a>
+        <a href={`${base}/`}>기록</a>
+        <a href={`${base}/tags`}>태그</a>
+        <a href={`${base}/about`}>소개</a>
       </nav>
     </div>
   </header>
