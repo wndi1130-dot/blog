@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+KR:wght@500;600;700&family=Pretendard:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================
+   석환의 기록 — Italian Modernist Editorial
+   크림 종이 / 빨강 단일 시그니처 / 굵은 룰 구획 / 격자 노출
+   시그니처는 글 단위 전환: 한 화면에 한 색만 소리친다
+   ============================================================ */
+:root{
+  --paper:#F4E8DF; --paper2:#EFE0D4;
+  --ink:#1F1B18; --grey:#7C7065; --sand:#9E948A;
+  --line:#D8C7B6; --line-strong:#1F1B18;
+  --sig:#C8341F;
+  --plex:'IBM Plex Sans Condensed',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --serif:'Noto Serif KR',serif;
+  --kr:'Pretendard',system-ui,sans-serif;
+  --maxw:880px;
+}
+/* 글 단위 시그니처 전환 — body class로 갈아끼움 */
+.sig-red{--sig:#C8341F;} .sig-blue{--sig:#1F4B4F;} .sig-brown{--sig:#9E5B2E;}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:var(--plex);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+.kr,:lang(ko){font-family:var(--kr);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+
+/* ── 헤더: 크림 바탕 + 굵은 검정 룰 ── */
+.site-head{background:var(--paper);border-bottom:2.5px solid var(--line-strong);}
+.site-head .wrap{display:flex;justify-content:space-between;align-items:flex-end;padding:26px 40px 14px;}
+.brand-block{display:flex;flex-direction:column;gap:3px;}
+.brand{font-weight:700;font-size:21px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;text-transform:lowercase;line-height:1;}
+.brand::after{content:".";color:var(--sig);}
+.brand-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);}
+.site-nav{display:flex;align-items:center;gap:22px;padding-bottom:2px;}
+.site-nav a{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--ink);text-decoration:none;}
+.site-nav a:hover{color:var(--sig);}
+.meta-strip .wrap{display:flex;justify-content:space-between;padding:7px 40px;border-bottom:1px solid var(--line);}
+.meta-strip span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);}
+
+/* ── 목록: 격자 노출 ── */
+.list-head{display:flex;align-items:baseline;justify-content:space-between;margin:56px 0 0;padding-bottom:12px;border-bottom:1.5px solid var(--ink);}
+.list-head .kicker{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--ink);}
+.list-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--sand);}
+.list-head .sig-dot{color:var(--sig);}
+.post-list{list-style:none;}
+.post-item{display:grid;grid-template-columns:64px 1fr;border-bottom:1px solid var(--line);}
+.post-num{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--sand);padding:30px 0 0;border-right:1px solid var(--line);}
+.post-body{padding:28px 0 30px 28px;}
+.post-link{text-decoration:none;display:block;}
+.post-line{font-family:var(--mono);font-size:10.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--sand);display:flex;gap:14px;align-items:center;margin-bottom:12px;}
+.post-line .kind{font-weight:600;}
+.kind-red{color:#C8341F;} .kind-blue{color:#1F4B4F;} .kind-brown{color:#9E5B2E;}
+.post-line .sep{color:var(--line);}
+.post-item h2{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.18;letter-spacing:-.01em;color:var(--ink);}
+.post-summary{color:var(--grey);font-size:15px;line-height:1.55;margin-top:10px;max-width:60ch;}
+.post-tags{margin-top:14px;font-family:var(--mono);font-size:10.5px;color:var(--sand);letter-spacing:.06em;}
+.post-tags span{margin-right:16px;}
+.post-item:hover h2{color:var(--sig);}
+.post-item:hover .post-num{color:var(--sig);}
+
+/* ── 글 본문 ── */
+.post-head{padding:60px 0 0;}
+.post-head .pkicker{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.20em;color:var(--sand);display:flex;gap:14px;align-items:center;margin-bottom:24px;}
+.post-head .pkicker .kind{font-weight:600;color:var(--sig);}
+.post-head .pkicker .sep{color:var(--line);}
+.post-head h1{font-family:var(--serif);font-weight:700;font-size:44px;line-height:1.12;letter-spacing:-.02em;color:var(--ink);max-width:24ch;}
+.post-head .lede{margin-top:22px;color:var(--grey);font-size:19px;line-height:1.5;max-width:52ch;font-weight:400;}
+.head-rule-thick{border:none;border-top:2.5px solid var(--ink);margin:30px 0 44px;}
+.prose{font-size:18px;line-height:1.72;color:var(--ink);}
+.prose.kr{font-family:var(--serif);font-weight:500;}
+.prose.kr p{line-height:1.85;}
+.prose h2{font-family:var(--mono);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.16em;color:var(--sig);margin:44px 0 16px;padding-top:10px;border-top:1px solid var(--line);}
+.prose h3{font-family:var(--kr);font-weight:600;font-size:18px;margin:28px 0 10px;}
+.prose p{margin-bottom:22px;}
+.prose strong{font-weight:700;}
+.prose a{color:var(--sig);text-underline-offset:3px;}
+.prose blockquote{border-left:3px solid var(--sig);padding-left:22px;color:var(--ink);margin:30px 0;font-size:21px;line-height:1.5;font-weight:600;font-family:var(--serif);}
+.prose hr{border:none;border-top:1px solid var(--line);margin:36px 0;}
+
+/* ── 발행본 첨부 ── */
+.attach{border-top:2.5px solid var(--ink);padding:24px 0 0;margin:52px 0;}
+.attach-kicker{font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.20em;color:var(--sig);margin-bottom:16px;}
+.report-frame{width:100%;height:560px;border:1px solid var(--line);background:#fff;margin-bottom:16px;}
+.attach-row{display:flex;flex-wrap:wrap;}
+.attach-row a{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.10em;text-decoration:none;color:var(--ink);margin-right:24px;border-bottom:1px solid transparent;padding-bottom:3px;}
+.attach-row a:hover{color:var(--sig);border-bottom-color:var(--sig);}
+
+/* ── 슬라이드 갤러리 ── */
+.deck-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0;}
+.deck-grid img{width:100%;border:1px solid var(--line);}
+
+/* ── 푸터 ── */
+.site-foot{border-top:2.5px solid var(--ink);margin-top:100px;}
+.site-foot .wrap{display:flex;justify-content:space-between;padding:22px 40px 70px;}
+.foot-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--sand);}
+
+@media(max-width:600px){
+  .post-head h1{font-size:30px;}
+  .post-item{grid-template-columns:40px 1fr;}
+  .post-body{padding-left:18px;}
+  .deck-grid{grid-template-columns:1fr;}
+  .report-frame{height:420px;}
+  .site-nav{gap:14px;}
+}

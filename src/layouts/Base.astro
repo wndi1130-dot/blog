@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+const { title = '석환의 기록', sig = 'red', metaLeft = '안석환 — 만든 것을 기록한다', metaRight = 'Gyeongnam · 2026' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+</head>
+<body class={`sig-${sig}`}>
+  <header class="site-head">
+    <div class="wrap">
+      <div class="brand-block">
+        <a href="/" class="brand">석환의 기록</a>
+        <span class="brand-sub">Records of what I build</span>
+      </div>
+      <nav class="site-nav">
+        <a href="/">기록</a>
+        <a href="/tags">태그</a>
+        <a href="/about">소개</a>
+      </nav>
+    </div>
+  </header>
+  <div class="meta-strip">
+    <div class="wrap"><span>{metaLeft}</span><span>{metaRight}</span></div>
+  </div>
+
+  <main class="wrap">
+    <slot />
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span class="foot-tag">© 2026 안석환</span>
+      <span class="foot-tag">만든 것을 기록한다</span>
+    </div>
+  </footer>
+</body>
+</html>

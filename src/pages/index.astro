@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (date) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}—${m}—${d}`;
+};
+const pad = (n) => String(n).padStart(2, '0');
+---
+<Base title="석환의 기록">
+  <div class="list-head">
+    <span class="kicker"><span class="sig-dot">●</span>&nbsp;&nbsp;Recent</span>
+    <span class="count">{pad(posts.length)} / {pad(posts.length)}</span>
+  </div>
+  <ul class="post-list">
+    {posts.map((post, i) => (
+      <li class="post-item">
+        <div class="post-num">{pad(i + 1)}</div>
+        <div class="post-body">
+          <a class="post-link" href={`/posts/${post.slug}`}>
+            <div class="post-line">
+              <span class={`kind kind-${post.data.sig}`}>{post.data.kind}</span>
+              <span class="sep">/</span>
+              <span>{fmt(post.data.date)}</span>
+            </div>
+            <h2>{post.data.title}</h2>
+            <p class="post-summary">{post.data.summary}</p>
+          </a>
+          {post.data.tags.length > 0 && (
+            <div class="post-tags">
+              {post.data.tags.map((t) => <span>{t}</span>)}
+            </div>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</Base>
