@@ -12,6 +12,7 @@ const fmt = (date) => {
   return `${y}—${m}—${d}`;
 };
 const pad = (n) => String(n).padStart(2, '0');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Base title="석환의 기록">
   <div class="list-head">
@@ -23,7 +24,7 @@ const pad = (n) => String(n).padStart(2, '0');
       <li class="post-item">
         <div class="post-num">{pad(i + 1)}</div>
         <div class="post-body">
-          <a class="post-link" href={`/posts/${post.slug}`}>
+          <a class="post-link" href={`${base}/posts/${post.slug}`}>
             <div class="post-line">
               <span class={`kind kind-${post.data.sig}`}>{post.data.kind}</span>
               <span class="sep">/</span>
