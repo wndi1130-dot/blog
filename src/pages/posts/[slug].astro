@@ -17,6 +17,11 @@ const fmt = (date) => {
   return `${y}—${m}—${dd}`;
 };
 const topic = d.tags.length ? d.tags.slice(0, 2).join(' · ') : '';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (p) => (p && p.startsWith('/') ? base + p : p);
+const reportUrl = withBase(d.report);
+const downloadUrl = withBase(d.download);
+const deckUrl = withBase(d.deck);
 ---
 <Base title={d.title} sig={d.sig} metaLeft={`${d.kind} · ${d.title}`} metaRight={fmt(d.date)}>
   <article>
@@ -38,10 +43,10 @@ const topic = d.tags.length ? d.tags.slice(0, 2).join(' · ') : '';
     {d.report && (
       <div class="attach">
         <div class="attach-kicker">발행본 — 디자인 리포트</div>
-        <iframe class="report-frame" src={d.report} title="리포트 미리보기" loading="lazy"></iframe>
+        <iframe class="report-frame" src={reportUrl} title="리포트 미리보기" loading="lazy"></iframe>
         <div class="attach-row">
-          <a href={d.report} target="_blank" rel="noopener">전체 화면 ↗</a>
-          {d.download && <a href={d.download} download>원본 다운로드 ↓</a>}
+          <a href={reportUrl} target="_blank" rel="noopener">전체 화면 ↗</a>
+          {d.download && <a href={downloadUrl} download>원본 다운로드 ↓</a>}
         </div>
       </div>
     )}
@@ -51,7 +56,7 @@ const topic = d.tags.length ? d.tags.slice(0, 2).join(' · ') : '';
         <div class="attach-kicker">발행본 — 슬라이드 덱</div>
         <div class="deck-grid">
           {Array.from({ length: 4 }).map((_, i) => (
-            <img src={`${d.deck}/${String(i + 1).padStart(2, '0')}.png`} alt={`슬라이드 ${i + 1}`} loading="lazy" />
+            <img src={`${deckUrl}/${String(i + 1).padStart(2, '0')}.png`} alt={`슬라이드 ${i + 1}`} loading="lazy" />
           ))}
         </div>
         {d.download && <div class="attach-row"><a href={d.download} download>PPTX 원본 ↓</a></div>}
